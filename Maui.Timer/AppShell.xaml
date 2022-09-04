@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Maui.Timer.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Maui.Timer"
+    xmlns:views="clr-namespace:Maui.Timer.Views"
+    Shell.FlyoutBehavior="Disabled">
+
+    <ShellContent Title="Home" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+
+    <ShellContent Route="AddCategory " ContentTemplate="{DataTemplate views:AddCategory}" />
+    <ShellContent Route="AddTransaction " ContentTemplate="{DataTemplate views:AddTransaction}" />
+    <ShellContent Route="BudgetReports " ContentTemplate="{DataTemplate views:BudgetReports}" />
+    <ShellContent Route="AddTransaction " ContentTemplate="{DataTemplate views:AddSleep}" />
+	<ShellContent Route="AddUber " ContentTemplate="{DataTemplate views:AddUber}" />
+
+</Shell>
+

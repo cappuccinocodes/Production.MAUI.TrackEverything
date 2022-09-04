@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Maui.Timer.ViewModels"
+             xmlns:model="clr-namespace:Maui.Timer.Models"
+             x:DataType="viewmodel:AddCategoryViewModel"
+             x:Class="Maui.Timer.Views.AddCategory"
+             Title="AddCategory">
+    <ScrollView>
+ <VerticalStackLayout>
+        <Button 
+            Text="Add Transaction"
+            Command="{Binding NavigateToAddTransactionCommand}" 
+            />
+        
+        <Entry 
+            Placeholder="Enter Name"
+            Text="{Binding Name}"
+            />
+
+        <Button 
+            Text="Add"
+            Command="{Binding AddCommand}"
+            />
+
+        <CollectionView 
+            x:Name="categoriesList"
+            ItemsSource="{Binding Categories}"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:BudgetCategory">
+                    <Grid ColumnDefinitions="*,*,*"
+                              RowDefinitions="50">
+
+                        <Label 
+                            Grid.Column="0" 
+                            Text="{Binding Id}" 
+                            FontSize="32"
+                            />
+                        
+                        <Label 
+                            Grid.Column="1" 
+                            Text="{Binding Name}" 
+                            FontSize="32"
+                            />
+                        <ImageButton 
+                            Source="trash.png" 
+                            Grid.Column="2" 
+                            MinimumHeightRequest="40"
+                            MaximumWidthRequest="70"
+                            CommandParameter="{Binding Id}"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AddCategoryViewModel}}, Path=DeleteCommand}"
+                                />
+                        </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
