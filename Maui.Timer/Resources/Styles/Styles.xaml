@@ -9,18 +9,14 @@
 		<Setter Property="Padding" Value="12" />
 		<Setter Property="HeightRequest" Value="50" />
 		<Setter Property="WidthRequest" Value="50" />
-		<Setter Property="Source" Value="trash.png" />
 	</Style>
 
-
 	<Style x:Key="DeleteButton" TargetType="ImageButton" BasedOn="{StaticResource FormButton}">
-		<Setter Property="BackgroundColor" Value="Red" />
 		<Setter Property="Source" Value="trash.png" />
 	</Style>
 
 	<Style x:Key="PopulateFormButton" TargetType="ImageButton" BasedOn="{StaticResource FormButton}">
-		<Setter Property="BackgroundColor" Value="Navy" />
-		<Setter Property="Source" Value="trash.png" />
+		<Setter Property="Source" Value="populateform.png" />
 	</Style>
 
 	<Style TargetType="ActivityIndicator">

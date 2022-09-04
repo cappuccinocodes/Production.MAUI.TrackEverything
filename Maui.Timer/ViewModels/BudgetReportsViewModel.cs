@@ -43,6 +43,29 @@ public partial class BudgetReportsViewModel : BudgetViewModel
             .OrderByDescending(x => x.Amount));
     }
 
+    private ObservableCollection<BudgetReport> GetReport(string month)
+    {
+        return new ObservableCollection<BudgetReport>(Transactions
+            .Join(Categories,
+                  transaction => transaction.CategoryId,
+                  category => category.Id,
+                  (transaction, category) => new
+                  {
+                      Date = transaction.Date,  
+                      CategoryId = category.Id,
+                      Amount = transaction.Amount,
+                      CategoryName = category.Name
+                  })
+            .Where(x => x.CategoryName == month)
+            .GroupBy(x => x.Date.ToString("MMM"))
+            .Select(x => new BudgetReport
+            {
+                Category = x.Key,
+                Amount = x.Sum(y => y.Amount)
+            })
+            .OrderByDescending(x => x.Amount));
+    }
+
     [ObservableProperty]
     private ObservableCollection<BudgetReport> report;
 
@@ -51,6 +74,9 @@ public partial class BudgetReportsViewModel : BudgetViewModel
 
     [ObservableProperty]
     private string selectedYearMonth;
+
+    [ObservableProperty]
+    private string selectedCategory;
 
     partial void OnSelectedYearMonthChanged(string value)
     {
@@ -62,6 +88,14 @@ public partial class BudgetReportsViewModel : BudgetViewModel
         var year = DateTime.ParseExact(yearMonth.Substring(4), "yy", CultureInfo.InvariantCulture).Year;
 
         Report = GetReport(month, year);
+
+    }
+
+    partial void OnSelectedCategoryChanged(string value)
+    {
+        var category = Categories[Int32.Parse(value)].Name;
+
+        Report = GetReport(category);
 
     }
 }

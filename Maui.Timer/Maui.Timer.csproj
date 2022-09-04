@@ -48,6 +48,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\populateform.png" />
 	  <None Remove="Resources\Images\trash.png" />
 	</ItemGroup>
 

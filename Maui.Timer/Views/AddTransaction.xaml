@@ -7,7 +7,7 @@
              x:Class="Maui.Timer.Views.AddTransaction"
              >
     <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout Padding="20">
 			<HorizontalStackLayout>
 				<Button BackgroundColor="DarkRed" 
                     Text="Reports"
@@ -63,9 +63,42 @@
                     Grid.Row="2"
                     Command="{Binding AddCommand}"
                     />
+			
 			</HorizontalStackLayout>
-        
-            <CollectionView 
+
+			<HorizontalStackLayout Spacing="5">
+				<Picker 
+					HeightRequest="50"
+					WidthRequest="200"
+                    ItemsSource="{Binding Categories}"
+                    SelectedItem="{Binding SelectedCategoryFilter}"
+                    ItemDisplayBinding="{Binding Name}" 
+                    />
+
+				<Button 
+					HeightRequest="50"
+                    Text="Filter by Category"
+                    Margin="0, 10, 0, 10"
+                    Grid.Row="2"
+                    Command="{Binding FilterByCategoryCommand}"
+                    />
+				<Entry 
+					HeightRequest="50"
+					WidthRequest="200"
+                    Placeholder="Enter Name"
+                    Grid.Row="1"
+                    Text="{Binding NameFilter}"
+                    />
+				<Button 
+					HeightRequest="50"
+                    Text="Filter by Name"
+                    Margin="0, 10, 0, 10"
+                    Grid.Row="2"
+                    Command="{Binding FilterByNameCommand}"
+                    />
+			</HorizontalStackLayout>
+
+			<CollectionView 
                 Margin="0, 10, 0, 0"
                 x:Name="transactionsList"
                 ItemsSource="{Binding TransactionsToView}"
@@ -73,7 +106,7 @@
                 >
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:BudgetTransactionDTO">
-                        <Grid ColumnDefinitions="*,*,*,*,*,*"
+                        <Grid ColumnDefinitions="*,*,*,*,.2*,.2*"
                               RowDefinitions="50"
                               >
 							<Label Text="{Binding Date, StringFormat='{0:ddd, MMM d}'}" FontSize="20"/>

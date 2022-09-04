@@ -35,6 +35,10 @@ public partial class AddTransactionViewModel : BudgetViewModel
     DateTime date;
     [ObservableProperty]
     BudgetCategory selectedCategory;
+    [ObservableProperty]
+    BudgetCategory selectedCategoryFilter;
+    [ObservableProperty]
+    string nameFilter;
 
     [RelayCommand]
     async Task Add()
@@ -85,6 +89,44 @@ public partial class AddTransactionViewModel : BudgetViewModel
         Name = transaction.Name;
         Amount = transaction.Amount;
         Date = transaction.Date;
+    }
+
+    [RelayCommand]
+    async Task FilterByCategory()
+    {
+        TransactionsToView =
+            new ObservableCollection<BudgetTransactionDTO>(
+                Transactions
+                .Where(x => x.CategoryId == selectedCategoryFilter.Id)
+                .Select(x => new BudgetTransactionDTO
+                {
+                    Id = x.Id,
+                    Date = x.Date,
+                    Name = x.Name,
+                    CategoryId = x.CategoryId,
+                    Amount = x.Amount,
+                    CategoryName = Categories.Single(y => y.Id == x.CategoryId).Name
+                }));
+
+    }
+
+    [RelayCommand]
+    async Task FilterByName()
+    {
+        TransactionsToView =
+            new ObservableCollection<BudgetTransactionDTO>(
+                Transactions
+                .Where(x => x.Name.Contains(NameFilter))
+                .Select(x => new BudgetTransactionDTO
+                {
+                    Id = x.Id,
+                    Date = x.Date,
+                    Name = x.Name,
+                    CategoryId = x.CategoryId,
+                    Amount = x.Amount,
+                    CategoryName = Categories.Single(y => y.Id == x.CategoryId).Name
+                }));
+
     }
 
     void PopulateList()
