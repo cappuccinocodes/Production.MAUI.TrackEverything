@@ -10,16 +10,17 @@ public partial class AddTransactionViewModel : BudgetViewModel
 {
     public AddTransactionViewModel()
     {
-        TransactionsToView = new ObservableCollection<BudgetTransactionDTO>(Transactions.Select(x =>
-        new BudgetTransactionDTO
-        {
-            Id = x.Id,
-            Date = x.Date,
-            Name = x.Name,
-            CategoryId = x.CategoryId,
-            Amount = x.Amount,
-            CategoryName = Categories.Single(y => y.Id == x.CategoryId).Name
-        }));
+        TransactionsToView = new ObservableCollection<BudgetTransactionDTO>(Transactions
+            .Select(x => new BudgetTransactionDTO
+            {
+                Id = x.Id,
+                Date = x.Date,
+                Name = x.Name,
+                CategoryId = x.CategoryId,
+                Amount = x.Amount,
+                CategoryName = Categories.Single(y => y.Id == x.CategoryId).Name
+            }));
+
     }
 
     [ObservableProperty]

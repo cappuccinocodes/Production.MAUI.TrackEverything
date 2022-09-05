@@ -74,7 +74,7 @@ public class TimerRepository
         conn.Delete(new TimerCategory { Id = id });
     }
 
-    internal void DeleteTransaction(int id)
+    internal void Delete(int id)
     {
         conn = new SQLiteConnection(_dbPath);
         conn.Delete(new Models.Timer { Id = id });

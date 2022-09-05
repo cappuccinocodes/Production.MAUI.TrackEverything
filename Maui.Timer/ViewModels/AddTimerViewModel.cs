@@ -10,11 +10,17 @@ public partial class AddTimerViewModel : ObservableObject
     public AddTimerViewModel()
     {
         Categories = new ObservableCollection<TimerCategory>(App.TimerRepository.GetAllCategories());
-        FetchTimers();
+        FetchTimers(DateTime.Today);
+
+        ViewDate = DateTime.Today;
+        Date = DateTime.Today;
     }
 
     [ObservableProperty]
     ObservableCollection<Models.Timer> timers;
+
+    [ObservableProperty]
+    ObservableCollection<TimerDTO> timersToView;
 
     [ObservableProperty]
     ObservableCollection<TimerCategory> categories;
@@ -23,11 +29,21 @@ public partial class AddTimerViewModel : ObservableObject
     TimeSpan duration;
 
     [ObservableProperty]
+    TimeSpan totalTime;
+
+    [ObservableProperty]
     int categoryId;
     [ObservableProperty]
     string categoryName;
     [ObservableProperty]
     DateTime date;
+
+    [ObservableProperty]
+    DateTime today;
+
+    [ObservableProperty]
+    DateTime viewDate;
+
     [ObservableProperty]
     TimerCategory selectedCategory;
 
@@ -57,12 +73,12 @@ public partial class AddTimerViewModel : ObservableObject
         {
             App.TimerRepository.AddTimer(new Models.Timer
             {
-                CategoryId = categoryId,
+                CategoryId = SelectedCategory.Id,
                 Duration = Duration,
                 Date = Date,
             });
 
-            FetchTimers();
+            FetchTimers(Date);
 
         }
         catch (Exception ex)
@@ -72,14 +88,31 @@ public partial class AddTimerViewModel : ObservableObject
     }
 
     [RelayCommand]
-    void DeleteCategory(int id)
+    void Delete(int id)
     {
-        Timers = new ObservableCollection<Models.Timer>(App.TimerRepository.GetAll());
+        App.TimerRepository.Delete(id);
+        FetchTimers(ViewDate);
     }
 
-    void FetchTimers()
+    [RelayCommand]
+    void ChooseViewDate()
+    {
+        FetchTimers(ViewDate);
+    }
+
+    void FetchTimers(DateTime date)
     {
         Timers = new ObservableCollection<Models.Timer>(App.TimerRepository.GetAll());
+        TimersToView = new ObservableCollection<TimerDTO>(Timers.Where(x => x.Date == date)
+            .Select(x => new TimerDTO
+            {
+                Id = x.Id,
+                Date = x.Date,
+                Duration = x.Duration,
+                CategoryId = x.CategoryId,
+                CategoryName = Categories.Single(y => y.Id == x.CategoryId).Name
+            }));
+        TotalTime = new TimeSpan(TimersToView.Sum(x => x.Duration.Ticks));
     }
 
 }

@@ -6,7 +6,7 @@
              x:DataType="viewmodel:AddSleepViewModel"
              x:Class="Maui.Timer.Views.AddSleep">
     <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout Padding="20">
             <Grid 
                 ColumnDefinitions="*,*,*"
                 RowDefinitions="50,50,50">
@@ -54,19 +54,16 @@
                 >
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:SleepDTO">
-                        <Grid ColumnDefinitions="*,*,*,*"
+                        <Grid ColumnDefinitions="*,*,*,.1*"
                               RowDefinitions="50"
                               >
-                            <Label Text="{Binding DateStart}" FontSize="32"/>
-                            <Label Grid.Column="1" Text="{Binding DateEnd}" FontSize="32"/>
-                            <Label Grid.Column="2" Text="{Binding Duration}" FontSize="32"/>
+							<Label Text="{Binding DateStart, StringFormat='{0:ddd, MMM d, HH:mm}'}" FontSize="20"/>
+							<Label Grid.Column="1" Text="{Binding DateEnd, StringFormat='{0:HH:mm}'}" FontSize="20"/>
+                            <Label Grid.Column="2" Text="{Binding Duration}" FontSize="20"/>
 
                             <ImageButton 
-                                BackgroundColor="Red"
-                                Source="trash.png" 
+                                Style="{DynamicResource DeleteButton}"
                                 Grid.Column="3" 
-                                MinimumHeightRequest="40"
-                                MaximumWidthRequest="70"
                                 CommandParameter="{Binding Id}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AddSleepViewModel}}, Path=DeleteCommand}"
                                />
