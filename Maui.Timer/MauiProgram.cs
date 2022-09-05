@@ -32,11 +32,15 @@ public static class MauiProgram
         builder.Services.AddTransient<AddUber>();
         builder.Services.AddTransient<AddUberShiftViewModel>();
 
+        builder.Services.AddTransient<AddTimer>();
+        builder.Services.AddTransient<AddTimerViewModel>();
+
         string dbPath = Path.Combine(FileSystem.AppDataDirectory, "lifeManager.db");
 
         builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<BudgetRepository>(s, dbPath));
         builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<SleepRepository>(s, dbPath));
         builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<UberRepository>(s, dbPath));
+        builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<TimerRepository>(s, dbPath));
 
 
         return builder.Build();

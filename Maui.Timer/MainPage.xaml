@@ -3,14 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui.Timer.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout>
+    <ScrollView HeightRequest="100" HorizontalOptions="CenterAndExpand">
+        <HorizontalStackLayout 
+        Padding="10">
             <Button
 				WidthRequest="200"
 				FontSize="20"
                 Text="Budget"
 				BackgroundColor="Green"
                 Clicked="NavigateToBudget" />
+
+			<Button
+				WidthRequest="200"
+				FontSize="20"
+                Text="Timers"
+				BackgroundColor="Purple"
+                Clicked="NavigateToTimers" />
 
 			<Button
 				WidthRequest="200"
@@ -24,7 +32,7 @@
 				FontSize="20"
                 Text="Uber"
                 Clicked="NavigateToUber" />
-		</VerticalStackLayout>
+		</HorizontalStackLayout>
     </ScrollView>
 
 </ContentPage>

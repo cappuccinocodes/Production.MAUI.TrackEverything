@@ -5,18 +5,21 @@
              xmlns:model="clr-namespace:Maui.Timer.Models"
              x:DataType="viewmodel:BudgetReportsViewModel"
              x:Class="Maui.Timer.Views.BudgetReports"
-             Title="BudgetReports">
-	<VerticalStackLayout>
+             >
+	<VerticalStackLayout Padding="20" Spacing="10">
 		<Picker 
-                    MinimumWidthRequest="300"
-                    MaximumHeightRequest="50"
+			 Title="By Month:"
+			 MinimumWidthRequest="300"
+                    MaximumHeightRequest="100"
                     ItemsSource="{Binding AvailableYearMonths, Mode=TwoWay}"
 			        SelectedIndex="{Binding SelectedYearMonth, Mode=TwoWay}"
                     />
+                   
 
 		<Picker 
+			Title="By Category:"
                     MinimumWidthRequest="300"
-                    MaximumHeightRequest="50"
+                    MaximumHeightRequest="100"
 			        ItemDisplayBinding="{Binding Name}"
                     ItemsSource="{Binding Categories}"
 			        SelectedIndex="{Binding SelectedCategory}"
@@ -33,8 +36,8 @@
 					<Grid ColumnDefinitions="*,*"
                               RowDefinitions="50"
                               >
-						<Label Text="{Binding Category}" FontSize="32"/>
-						<Label Grid.Column="1" Text="{Binding Amount}" FontSize="32"/>
+						<Label Text="{Binding Category}" FontSize="20"/>
+						<Label Grid.Column="1" Text="{Binding Amount}" FontSize="20"/>
 
 					</Grid>
 				</DataTemplate>

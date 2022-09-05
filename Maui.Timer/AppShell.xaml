@@ -14,6 +14,7 @@
     <ShellContent Route="BudgetReports " ContentTemplate="{DataTemplate views:BudgetReports}" />
     <ShellContent Route="AddTransaction " ContentTemplate="{DataTemplate views:AddSleep}" />
 	<ShellContent Route="AddUber " ContentTemplate="{DataTemplate views:AddUber}" />
+	<ShellContent Route="AddTimer " ContentTemplate="{DataTemplate views:AddTimer}" />
 
 </Shell>
 

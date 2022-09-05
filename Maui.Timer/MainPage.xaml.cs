@@ -24,5 +24,10 @@ public partial class MainPage : ContentPage
     {
         Navigation.PushAsync(new AddUber(new AddUberShiftViewModel()));
     }
+
+    private void NavigateToTimers(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new AddTimer(new AddTimerViewModel()));
+    }
 }
 

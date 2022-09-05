@@ -7,11 +7,13 @@ public partial class App : Application
     public static BudgetRepository BudgetRepository { get; private set; }
     public static SleepRepository SleepRepository { get; private set; }
     public static UberRepository UberRepository { get; private set; }
+    public static TimerRepository TimerRepository { get; private set; }
 
     public App(
 		BudgetRepository budgetRepository, 
 		SleepRepository sleepRepository,
-		UberRepository uberRepository)
+		UberRepository uberRepository,
+        TimerRepository timerRepository)
 	{
 		InitializeComponent();
 
@@ -20,5 +22,6 @@ public partial class App : Application
 		BudgetRepository = budgetRepository;
 		SleepRepository = sleepRepository;
 		UberRepository = uberRepository;
+		TimerRepository = timerRepository;	
 	}
 }
