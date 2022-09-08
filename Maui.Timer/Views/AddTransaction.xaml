@@ -35,8 +35,6 @@
 					HeightRequest="50"
 					WidthRequest="200"
                     Grid.Column="1"
-                    MinimumDate="03/30/2022"
-                    MaximumDate="12/31/2029"
                     Date="{Binding Date}"
                     />
 

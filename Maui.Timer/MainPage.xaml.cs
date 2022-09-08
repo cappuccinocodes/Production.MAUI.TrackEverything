@@ -29,5 +29,10 @@ public partial class MainPage : ContentPage
     {
         Navigation.PushAsync(new AddTimer(new AddTimerViewModel()));
     }
+
+    private void NavigateToExercise(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new AddExercise(new AddExerciseViewModel()));
+    }
 }
 

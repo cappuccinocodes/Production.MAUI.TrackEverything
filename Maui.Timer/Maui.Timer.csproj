@@ -65,6 +65,9 @@
 	  <MauiXaml Update="Views\AddCategory.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\AddExercise.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\AddSleep.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

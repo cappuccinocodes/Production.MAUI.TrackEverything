@@ -14,5 +14,6 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(AddSleep), typeof(AddSleep));
         Routing.RegisterRoute(nameof(AddUber), typeof(AddUber));
         Routing.RegisterRoute(nameof(AddTimer), typeof(AddTimer));
+        Routing.RegisterRoute(nameof(AddExercise), typeof(AddExercise));
     }
 }

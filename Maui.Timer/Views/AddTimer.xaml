@@ -23,24 +23,23 @@
 			</HorizontalStackLayout>
 
 			<HorizontalStackLayout Spacing="10"
-							   VerticalOptions="Center">
+							       VerticalOptions="Center">
 				<Picker 
-					HeightRequest="50"
 					WidthRequest="200"
+					VerticalOptions="Center"
                     ItemsSource="{Binding Categories}"
                     ItemDisplayBinding="{Binding Name}"
 				    SelectedItem="{Binding SelectedCategory}"/>
 
 				<DatePicker 
+					VerticalOptions="Center"
                     MinimumWidthRequest="300"
                     MinimumDate="08/30/2022"
                     MaximumDate="12/31/2029"
                     Date="{Binding Date}"
                     />
 
-				<TimePicker 	
-				    VerticalOptions="Center"
-				    MinimumHeightRequest="50"
+				<TimePicker 
                     MinimumWidthRequest="300"
                     Time="{Binding Duration}"
                     />

@@ -41,6 +41,7 @@ public static class MauiProgram
         builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<SleepRepository>(s, dbPath));
         builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<UberRepository>(s, dbPath));
         builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<TimerRepository>(s, dbPath));
+        builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<ExerciseRepository>(s, dbPath));
 
 
         return builder.Build();

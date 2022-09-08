@@ -30,6 +30,13 @@
 			<Button
 				WidthRequest="200"
 				FontSize="20"
+                Text="Exercise"
+				BackgroundColor="Goldenrod"
+                Clicked="NavigateToExercise" />
+
+			<Button
+				WidthRequest="200"
+				FontSize="20"
                 Text="Uber"
                 Clicked="NavigateToUber" />
 		</HorizontalStackLayout>
