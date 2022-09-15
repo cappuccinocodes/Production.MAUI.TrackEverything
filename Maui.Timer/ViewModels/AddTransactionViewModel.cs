@@ -10,6 +10,8 @@ public partial class AddTransactionViewModel : BudgetViewModel
 {
     public AddTransactionViewModel()
     {
+        Date = DateTime.Now;
+
         TransactionsToView = new ObservableCollection<BudgetTransactionDTO>(Transactions
             .Select(x => new BudgetTransactionDTO
             {
@@ -20,7 +22,6 @@ public partial class AddTransactionViewModel : BudgetViewModel
                 Amount = x.Amount,
                 CategoryName = Categories.Single(y => y.Id == x.CategoryId).Name
             }));
-
     }
 
     [ObservableProperty]

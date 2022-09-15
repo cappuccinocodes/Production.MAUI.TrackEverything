@@ -12,7 +12,7 @@
                 RowDefinitions="50,50,50">
                 <DatePicker 
                     MinimumWidthRequest="300"
-                    MinimumDate="03/30/2022"
+                    MinimumDate="08/30/2022"
                     MaximumDate="12/31/2029"
                     Date="{Binding DateStart}"
                     />
@@ -26,7 +26,7 @@
                 <DatePicker 
                     MinimumWidthRequest="300"
                     Grid.Column="1"
-                    MinimumDate="03/30/2022"
+                    MinimumDate="08/30/2022"
                     MaximumDate="12/31/2029"
                     Date="{Binding DateEnd}"
                     />

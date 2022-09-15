@@ -17,13 +17,24 @@ public class Exercise
     [Required]
     public int Sets { get; set; }
 
-    public TimeSpan? Duration { get; set; }
+    public TimeSpan Duration1 { get; set; }
+    public TimeSpan Duration2 { get; set; }
+    public TimeSpan Duration3 { get; set; }
+    public TimeSpan Duration4 { get; set; }
 
-    [Required]
-    public int Repetitions { get; set; }
+    public int Repetitions1 { get; set; }
+    public int Repetitions2 { get; set; }
+    public int Repetitions3 { get; set; }
+    public int Repetitions4 { get; set; }
 
-    public decimal Intensity { get; set; }
+    public decimal Intensity1 { get; set; }
+    public decimal Intensity2 { get; set; }
+    public decimal Intensity3 { get; set; }
+    public decimal Intensity4 { get; set; }
 
-    public decimal Distance { get; set; }
+    public decimal Distance1 { get; set; }
+    public decimal Distance2 { get; set; }
+    public decimal Distance3 { get; set; }
+    public decimal Distance4 { get; set; }
 }
 

@@ -46,7 +46,7 @@ public class ExerciseRepository
         return new List<Exercise>();
     }
 
-    internal void Transaction(int id)
+    internal void Delete(int id)
     {
         conn = new SQLiteConnection(_dbPath);
         conn.Delete(new Exercise { Id = id });

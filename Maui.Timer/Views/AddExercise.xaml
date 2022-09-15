@@ -6,18 +6,17 @@
              x:DataType="viewmodel:AddExerciseViewModel"
              x:Class="Maui.Timer.Views.AddExercise"
              >
-    <VerticalStackLayout>
+	<VerticalStackLayout Spacing="10"
+						 >
 		<DatePicker 
-                    MinimumWidthRequest="300"
-                    Date="{Binding Date}"
-                    />
-		<TimePicker 
-                    MinimumWidthRequest="300"
-                    Time="{Binding Duration}"
-                    />
-		<Picker Title="Select Exercise Type"
-                SelectedItem="{Binding Type}"
-                >
+			MinimumWidthRequest="300"
+			Date="{Binding Date}"
+			/>
+
+		<Picker 
+			Title="Select Exercise Type"
+			SelectedItem="{Binding Type}"
+			>
 			<Picker.ItemsSource>
 				<x:Array Type="{x:Type x:String}">
 					<x:String>Ski</x:String>
@@ -30,10 +29,167 @@
 			</Picker.ItemsSource>
 		</Picker>
 
-		<Picker Title="Sets"
-				ItemsSource="{Binding SetsForPicker}"
-                SelectedItem="{Binding Sets}"
-                />
+		<HorizontalStackLayout>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Repetitions1}"
+			/>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Repetitions2}"
+			/>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Repetitions3}"
+			/>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Repetitions4}"
+			/>
+		</HorizontalStackLayout>
+
+		<HorizontalStackLayout>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Distance1}"
+			/>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Distance2}"
+			/>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Distance3}"
+			/>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Distance4}"
+			/>
+		</HorizontalStackLayout>
+
+		<HorizontalStackLayout>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Intensity1}"
+			/>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Intensity2}"
+			/>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Intensity3}"
+			/>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Intensity4}"
+			/>
+		</HorizontalStackLayout>
+		
+		<Grid ColumnDefinitions="*,*"
+			  RowDefinitions="*,*,*,*">
+
+			<Picker
+				ItemsSource="{Binding NumbersForPicker}"/>
+
+			<Picker
+				Grid.Column="1"
+				ItemsSource="{Binding NumbersForPicker}"/>
+
+			<Picker
+				Grid.Row="1"
+				ItemsSource="{Binding NumbersForPicker}"/>
+
+			<Picker
+				Grid.Row="1"
+				Grid.Column="1"
+				ItemsSource="{Binding NumbersForPicker}"/>
+
+			<Picker
+				Grid.Row="2"
+				ItemsSource="{Binding NumbersForPicker}"/>
+
+			<Picker
+				Grid.Row="2"
+				Grid.Column="1"
+				ItemsSource="{Binding NumbersForPicker}"/>
+
+			<Picker
+				Grid.Row="3"
+				ItemsSource="{Binding NumbersForPicker}"/>
+
+			<Picker
+				Grid.Row="3"
+				Grid.Column="1"
+				ItemsSource="{Binding NumbersForPicker}"/>
+
+		</Grid>
+		
+		<HorizontalStackLayout>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Intensity1}"
+			/>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Intensity2}"
+			/>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Intensity3}"
+			/>
+			<Entry 
+			HorizontalOptions="Start"
+			MaximumWidthRequest="200"
+			Text="{Binding Intensity4}"
+			/>
+		</HorizontalStackLayout>
+
+		<CollectionView 
+                Margin="0, 10, 0, 0"
+                x:Name="transactionsList"
+                ItemsSource="{Binding Exercises}"
+                SelectionMode="None"
+                >
+			<CollectionView.ItemTemplate>
+				<DataTemplate x:DataType="model:Exercise">
+					<Grid ColumnDefinitions="*,*,*,*,*,*,.2*,.2*"
+                              RowDefinitions="50"
+                              >
+						<Label Text="{Binding Date, StringFormat='{0:ddd, MMM d}'}" FontSize="20"/>
+						<Label Grid.Column="1" Text="{Binding Type}" FontSize="20"/>
+						<Label Grid.Column="2" Text="{Binding Sets}" FontSize="20"/>
+						<ImageButton
+						        Style="{StaticResource PopulateFormButton}"
+                                Grid.Column="4" 
+                                CommandParameter="{Binding}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AddExerciseViewModel}}, Path=PopulateFormCommand}"
+                               />
+						<ImageButton 
+								Style="{StaticResource DeleteButton}"
+                                Grid.Column="5" 
+                                CommandParameter="{Binding Id}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AddExerciseViewModel}}, Path=DeleteCommand}"
+                               />
+					</Grid>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
 
 	</VerticalStackLayout>
 </ContentPage>
